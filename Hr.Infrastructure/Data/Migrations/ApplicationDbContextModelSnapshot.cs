@@ -36,8 +36,14 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Property<TimeOnly>("CheckOut")
                         .HasColumnType("time");
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -54,6 +60,12 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -65,6 +77,38 @@ namespace Hr.Infrastructure.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Department");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7618),
+                            Name = "Information Technology (IT)"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7666),
+                            Name = "Human Resources (HR)"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7668),
+                            Name = "Sales Department"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7670),
+                            Name = "Marketing Department"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7672),
+                            Name = "Finance Department"
+                        });
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.EmployeeAggragtte.Employee", b =>
@@ -76,6 +120,9 @@ namespace Hr.Infrastructure.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("ContractDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -97,6 +144,12 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NationalId")
                         .IsRequired()
@@ -134,6 +187,12 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -142,6 +201,86 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Nationality");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5603),
+                            Name = "Egyptian"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5637),
+                            Name = "Saudi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5640),
+                            Name = "Emirati"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5643),
+                            Name = "Jordanian"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5645),
+                            Name = "Kuwaiti"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5647),
+                            Name = "Qatari"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5649),
+                            Name = "Bahraini"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5651),
+                            Name = "Omani"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5652),
+                            Name = "Tunisian"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5654),
+                            Name = "Moroccan"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5656),
+                            Name = "Algerian"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5658),
+                            Name = "American"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5660),
+                            Name = "British"
+                        });
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.Role", b =>
@@ -151,6 +290,12 @@ namespace Hr.Infrastructure.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -181,6 +326,12 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.Property<bool>("CanRead")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PageName")
                         .IsRequired()

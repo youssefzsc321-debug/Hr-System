@@ -1,0 +1,40 @@
+﻿using Hr.Application.Interfaces;
+using Hr.Domain.Common;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hr.Infrastructure.Services
+{
+    public class SpecificationsEval<TEnity> where TEnity : BaseEntity
+    {
+        public static IQueryable<TEnity> GetQuery(IQueryable<TEnity> inputQuery, ISpecification<TEnity> spec)
+        {
+            var query = inputQuery.AsQueryable();
+            if (spec.Criteria != null)
+            {
+                query = query.Where(spec.Criteria);
+            }
+
+            if (spec.OrderBy != null)
+                query = query.OrderBy(spec.OrderBy);
+
+            if (spec.OrderByDesc != null)
+                query = query.OrderByDescending(spec.OrderByDesc);
+
+           
+
+            if (spec.Includes != null && spec.Includes.Any())
+            {
+                foreach (var include in spec.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return query;
+        }
+    }
+}

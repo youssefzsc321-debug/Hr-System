@@ -9,6 +9,7 @@ namespace Hr.Domain.Common
     public class BaseEntity
     {
         public int Id { get; set; }
-
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime? LastUpdatedOn { get; set; }
     }
 }

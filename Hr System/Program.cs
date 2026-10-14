@@ -1,7 +1,7 @@
 using Hr.Infrastructure;
 using Hr.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
-
+using Hr.Application;
 namespace Hr_System
 {
     public class Program
@@ -12,6 +12,8 @@ namespace Hr_System
 
             builder.Services.InfrastructureConfiguration(
                 builder.Configuration);
+
+            builder.Services.AddApplicationServices();
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

@@ -21,6 +21,7 @@ namespace Hr.Domain.Entites.EmployeeAggragtte
         public string NationalId { get; set; }
         public DateTime ContractDate { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
         public decimal Salary { get; set; }

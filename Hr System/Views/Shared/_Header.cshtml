@@ -1,0 +1,71 @@
+﻿<!--begin::Header-->
+<div id="kt_header" class="header" style="min-height: 75px;">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex flex-stack py-2">
+        <!--begin::Brand-->
+        <div class="d-flex align-items-center me-5">
+            <!--begin::Aside toggle-->
+            <div class="d-lg-none btn btn-icon btn-active-color-white w-30px h-30px ms-n2 me-3" id="kt_aside_toggle">
+                <span class="svg-icon svg-icon-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="currentColor" />
+                        <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="currentColor" />
+                    </svg>
+                </span>
+            </div>
+            <!--end::Aside toggle-->
+            <a href="/" class="d-flex align-items-center">
+                <img alt="Logo" src="~/assets/images/logo2.png" style="height: 150px; width: 150px; max-height: none;" />
+            </a>
+            <!--end::Logo-->
+        </div>
+        <!--end::Brand-->
+        <!--begin::Topbar-->
+        <div class="d-flex align-items-center flex-shrink-0">
+            <!--begin::Theme mode-->
+            <div class="d-flex align-items-center ms-1">
+                <a href="#" class="btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-30px h-30px h-40px w-40px" data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                    <span class="svg-icon theme-light-show svg-icon-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.9905 5.62598C10.7293 5.62574 9.49646 5.9995 8.44775 6.69997C7.39903 7.40045 6.58159 8.39619 6.09881 9.56126C5.61603 10.7263 5.48958 12.0084 5.73547 13.2453C5.98135 14.4823 6.58852 15.6185 7.48019 16.5104C8.37186 17.4022 9.50798 18.0096 10.7449 18.2557C11.9818 18.5019 13.2639 18.3757 14.429 17.8931C15.5942 17.4106 16.5901 16.5933 17.2908 15.5448C17.9915 14.4962 18.3655 13.2634 18.3655 12.0023C18.3637 10.3119 17.6916 8.69129 16.4964 7.49593C15.3013 6.30056 13.6808 5.62806 11.9905 5.62598Z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span class="svg-icon theme-dark-show svg-icon-2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.0335 20.5714C15.6943 20.5714 18.9426 18.2053 20.1168 14.7338C20.1884 14.5225 20.1114 14.289 19.9284 14.161C19.746 14.034 19.5003 14.0418 19.3257 14.1821C18.2432 15.0546 16.9371 15.5156 15.5491 15.5156C12.2257 15.5156 9.48884 12.8122 9.48884 9.48886C9.48884 7.41079 10.5773 5.47137 12.3449 4.35752C12.5342 4.23832 12.6 4.00733 12.5377 3.79251C12.4759 3.57768 12.2571 3.42859 12.0335 3.42859C7.32556 3.42859 3.42857 7.29209 3.42857 12C3.42857 16.7079 7.32556 20.5714 12.0335 20.5714Z" fill="currentColor" />
+                        </svg>
+                    </span>
+                </a>
+                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-700 menu-icon-muted menu-active-bg menu-state-color fw-semibold py-4 fs-base w-175px" data-kt-menu="true" data-kt-element="theme-mode-menu">
+                    <div class="menu-item px-3 my-0">
+                        <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="light">
+                            <span class="menu-title">Light</span>
+                        </a>
+                    </div>
+                    <div class="menu-item px-3 my-0">
+                        <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="dark">
+                            <span class="menu-title">Dark</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--end::Theme mode-->
+            <!--begin::User-->
+            <div class="d-flex align-items-center ms-1" id="kt_header_user_menu_toggle">
+                <div class="btn btn-flex align-items-center bg-hover-white bg-hover-opacity-10 py-2 px-2 px-md-3" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                    <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
+                        <span class="text-muted fs-8 fw-semibold lh-1 mb-1">Youssef</span>
+                        <span class="text-white fs-8 fw-bold lh-1">HR Admin</span>
+                    </div>
+                    <div class="symbol symbol-30px symbol-md-40px">
+                        <img src="~/assets/images/avatar.png" alt="image" />
+                    </div>
+                </div>
+            </div>
+            <!--end::User -->
+        </div>
+        <!--end::Topbar-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Header-->
