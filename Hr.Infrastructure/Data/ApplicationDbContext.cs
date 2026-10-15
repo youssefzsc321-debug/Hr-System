@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Hr.Domain.Entites;
+using Hr.Domain.Entites.EmployeeAggragtte;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hr.Infrastructure.Data
@@ -27,5 +29,16 @@ namespace Hr.Infrastructure.Data
                 fk.DeleteBehavior = DeleteBehavior.Restrict;
             }
         }
+
+        public DbSet<GeneralSettings> GeneralSettings { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Nationality> Nationalities { get; set; }
+        public DbSet<RolePermission> RolePermissions { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<OfficialHoliday> officialHolidays { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+
+
     }
 }

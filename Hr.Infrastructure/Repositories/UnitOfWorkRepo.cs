@@ -19,12 +19,15 @@ namespace Hr.Infrastructure.Repositories
 
         public IGenericRepo<Nationality> Nationalites { get; }
 
+        public IGenericRepo<GeneralSettings> GeneralSettings { get; }
+
         public UnitOfWorkRepo(ApplicationDbContext context)
         {
             _context = context;
             Employees = new GenericRepo<Employee>(_context);
             Departments = new GenericRepo<Department>(_context);
             Nationalites = new GenericRepo<Nationality>(_context);
+            GeneralSettings = new GenericRepo<GeneralSettings>(_context);
 
         }
             

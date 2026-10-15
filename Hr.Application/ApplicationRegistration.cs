@@ -11,6 +11,7 @@ namespace Hr.Application
             services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile<Hr.Application.Mapping.EmployeeMapping>();
+                cfg.AddProfile<Hr.Application.Mapping.GeneralSettingMapping>();
             });
 
             return services;

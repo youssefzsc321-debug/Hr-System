@@ -13,6 +13,7 @@ namespace Hr.Application.Repositories
         public IGenericRepo<Employee> Employees { get; }
         public IGenericRepo<Department> Departments { get; }
         public IGenericRepo<Nationality> Nationalites { get; }
+        public IGenericRepo<GeneralSettings> GeneralSettings { get; }
         
 
         int SaveChanges();

@@ -1,0 +1,231 @@
+﻿@model Hr.Application.ViewModels.GeneralSettingsVms.FormVm
+
+@{
+    ViewData["Title"] = "General Settings";
+}
+
+<!--begin::Content wrapper-->
+<div class="d-flex flex-column flex-column-fluid">
+    <!--begin::Toolbar-->
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack flex-wrap gap-2">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">System General Settings</h1>
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                    <li class="breadcrumb-item text-muted">
+                        <a href="/" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                    </li>
+                    <li class="breadcrumb-item text-muted">Settings</li>
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                    </li>
+                    <li class="breadcrumb-item text-dark">General Settings</li>
+                </ul>
+            </div>
+            <!--end::Page title-->
+            <!--begin::Action badge-->
+            <div class="d-flex align-items-center gap-2 gap-lg-3">
+                <span class="badge badge-light-primary fw-bold fs-8 px-4 py-3">
+                    <i class="ki-duotone ki-shield-tick fs-5 text-primary me-1">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                    HR Core Configurations
+                </span>
+            </div>
+            <!--end::Action badge-->
+        </div>
+    </div>
+    <!--end::Toolbar-->
+    <!--begin::Content-->
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+
+            <form id="general-settings-form" asp-action="Save" method="post" class="form">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row g-7">
+
+                    <!-- Left Column: Financial & Overtime Rules -->
+                    <div class="col-xl-6">
+                        <div class="card card-flush h-xl-100">
+                            <!--begin::Card header-->
+                            <div class="card-header pt-7">
+                                <div class="card-title">
+                                    <i class="ki-duotone ki-dollar fs-2x text-primary me-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i>
+                                    <h3 class="fw-bold text-gray-800">Financial & Overtime Policies</h3>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-5">
+                                <!-- Overtime Value -->
+                                <div class="mb-10 fv-row">
+                                    <label class="required form-label fw-bold fs-6 mb-2">Overtime Rate Value (Per Hour)</label>
+                                    <div class="input-group input-group-solid flex-nowrap">
+                                        <span class="input-group-text"><i class="ki-duotone ki-time fs-4"><span class="path1"></span><span class="path2"></span></i></span>
+                                        <input asp-for="OverTimeVal" type="number" step="0.01" class="form-control form-control-solid" placeholder="e.g. 150" />
+                                        <span class="input-group-text fw-bold text-muted">EGP</span>
+                                    </div>
+                                    <div class="text-muted fs-7 mt-1">Defines the financial compensation added per extra hour worked.</div>
+                                    <span asp-validation-for="OverTimeVal" class="text-danger mt-1 fs-7"></span>
+                                </div>
+
+                                <!-- Deduction Value -->
+                                <div class="mb-5 fv-row">
+                                    <label class="required form-label fw-bold fs-6 mb-2">Late Deduction Value (Per Hour)</label>
+                                    <div class="input-group input-group-solid flex-nowrap">
+                                        <span class="input-group-text"><i class="ki-duotone ki-minus-circle fs-4 text-danger"><span class="path1"></span><span class="path2"></span></i></span>
+                                        <input asp-for="DeducationVal" type="number" step="0.01" class="form-control form-control-solid" placeholder="e.g. 100" />
+                                        <span class="input-group-text fw-bold text-muted">EGP</span>
+                                    </div>
+                                    <div class="text-muted fs-7 mt-1">Defines the amount deducted from salary for unexcused late arrivals.</div>
+                                    <span asp-validation-for="DeducationVal" class="text-danger mt-1 fs-7"></span>
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Weekly Official Holidays -->
+                    <div class="col-xl-6">
+                        <div class="card card-flush h-xl-100">
+                            <!--begin::Card header-->
+                            <div class="card-header pt-7">
+                                <div class="card-title">
+                                    <i class="ki-duotone ki-calendar-tick fs-2x text-success me-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                        <span class="path5"></span>
+                                        <span class="path6"></span>
+                                    </i>
+                                    <h3 class="fw-bold text-gray-800">Weekly Official Holidays</h3>
+                                </div>
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-5">
+                                <!-- First Holiday -->
+                                <div class="mb-10 fv-row">
+                                    <label class="required form-label fw-bold fs-6 mb-2">First Official Holiday</label>
+                                    <select asp-for="FirstDay" class="form-select form-select-solid" data-control="select2" data-hide-search="true">
+                                        <option value="">Select First Day</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                    </select>
+                                    <div class="text-muted fs-7 mt-1">Primary weekend off day for corporate staff.</div>
+                                    <span asp-validation-for="FirstDay" class="text-danger mt-1 fs-7"></span>
+                                </div>
+
+                                <!-- Second Holiday -->
+                                <div class="mb-5 fv-row">
+                                    <label class="required form-label fw-bold fs-6 mb-2">Second Official Holiday</label>
+                                    <select asp-for="SecondDay" class="form-select form-select-solid" data-control="select2" data-hide-search="true">
+                                        <option value="">Select Second Day</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                    </select>
+                                    <div class="text-muted fs-7 mt-1">Secondary weekend off day (if applicable).</div>
+                                    <span asp-validation-for="SecondDay" class="text-danger mt-1 fs-7"></span>
+                                </div>
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer Actions Bar -->
+                <div class="card card-flush mt-7">
+                    <div class="card-body d-flex justify-content-end py-5 px-9 gap-3">
+                        <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
+                        <button type="button" id="submit-settings-btn" class="btn btn-primary">
+                            <span class="indicator-label">
+                                <i class="ki-duotone ki-check fs-2 me-1">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                                Save General Settings
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <!--end::Content-->
+</div>
+<!--end::Content wrapper-->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            const $form = $('#general-settings-form');
+            const $submitBtn = $('#submit-settings-btn');
+            const recordId = @Model.Id;
+
+            if ($submitBtn.length && $form.length) {
+                $submitBtn.on('click', function (e) {
+                    e.preventDefault();
+
+                    if ($form.valid && !$form.valid()) {
+                        return;
+                    }
+
+                    if (recordId > 0) {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You are about to update the system general settings.",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#009ef7',
+                            cancelButtonColor: '#92929f',
+                            confirmButtonText: 'Yes, update settings!',
+                            cancelButtonText: 'Cancel'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $form.submit();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Saved Successfully!',
+                            text: "General settings have been configured successfully.",
+                            icon: 'success',
+                            confirmButtonColor: '#50cd89',
+                            confirmButtonText: 'Great!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $form.submit();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+}

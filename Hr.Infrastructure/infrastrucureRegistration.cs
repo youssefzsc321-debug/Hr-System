@@ -24,6 +24,7 @@ namespace Hr.Infrastructure
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
             services.AddScoped<IUnitOfWorkRepo, UnitOfWorkRepo>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IGeneralSettingService, GeneralSettingService>();
 
 
 

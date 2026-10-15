@@ -49,7 +49,7 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Attendance");
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.Department", b =>
@@ -76,37 +76,37 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7618),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(461),
                             Name = "Information Technology (IT)"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7666),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(504),
                             Name = "Human Resources (HR)"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7668),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(507),
                             Name = "Sales Department"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7670),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(509),
                             Name = "Marketing Department"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 901, DateTimeKind.Local).AddTicks(7672),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(511),
                             Name = "Finance Department"
                         });
                 });
@@ -176,7 +176,7 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasIndex("NationalityId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.EmployeeAggragtte.Nationality", b =>
@@ -200,87 +200,149 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nationality");
+                    b.ToTable("Nationalities");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5603),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7540),
                             Name = "Egyptian"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5637),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7575),
                             Name = "Saudi"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5640),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7577),
                             Name = "Emirati"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5643),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7579),
                             Name = "Jordanian"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5645),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7581),
                             Name = "Kuwaiti"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5647),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7583),
                             Name = "Qatari"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5649),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7585),
                             Name = "Bahraini"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5651),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7587),
                             Name = "Omani"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5652),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7589),
                             Name = "Tunisian"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5654),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7591),
                             Name = "Moroccan"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5656),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7593),
                             Name = "Algerian"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5658),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7595),
                             Name = "American"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2026, 10, 14, 14, 53, 6, 907, DateTimeKind.Local).AddTicks(5660),
+                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7596),
                             Name = "British"
                         });
+                });
+
+            modelBuilder.Entity("Hr.Domain.Entites.GeneralSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DeducationVal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("FirstDay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("OverTimeVal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SecondDay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeneralSettings");
+                });
+
+            modelBuilder.Entity("Hr.Domain.Entites.OfficialHoliday", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("officialHolidays");
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.Role", b =>
@@ -304,7 +366,7 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Hr.Domain.Entites.RolePermission", b =>
@@ -345,7 +407,7 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RolePermission");
+                    b.ToTable("RolePermissions");
                 });
 
             modelBuilder.Entity("Hr.Infrastructure.Data.AppUser", b =>
@@ -605,7 +667,7 @@ namespace Hr.Infrastructure.Data.Migrations
 
                             b1.HasKey("EmployeeId");
 
-                            b1.ToTable("Employee");
+                            b1.ToTable("Employees");
 
                             b1.WithOwner()
                                 .HasForeignKey("EmployeeId");

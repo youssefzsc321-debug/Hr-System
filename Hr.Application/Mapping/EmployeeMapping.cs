@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hr.Application.ViewModels.EmployeesVM;
+using Hr.Application.ViewModels.GeneralSettingsVms;
 using Hr.Domain.Entites.EmployeeAggragtte;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,14 @@ namespace Hr.Application.Mapping
         {
             CreateMap<Employee, GetEmployeesVM>();
 
-            CreateMap<FormVm, Employee>()
+            CreateMap<ViewModels.EmployeesVM.FormVm, Employee>()
                 .ForMember(dest => dest.Nationality, opt => opt.Ignore()) 
                 .ForMember(dest => dest.Department, opt => opt.Ignore())  
                 .ReverseMap();
 
             CreateMap<Address, AddressVM>().ReverseMap();
+
+                
         }
     }
 }
