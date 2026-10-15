@@ -20,3 +20,40 @@ html {
 body {
   margin-bottom: 60px;
 }
+```css
+/* Official Holidays Actions */
+#kt_holidays_table .edit-holiday-btn,
+#kt_holidays_table .delete-holiday-btn {
+    min-width: 40px;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+    #kt_holidays_table .edit-holiday-btn i,
+    #kt_holidays_table .delete-holiday-btn i {
+        font-size: 1.35rem !important;
+        line-height: 1;
+    }
+
+#kt_holidays_table .edit-holiday-btn:hover {
+    background-color: #009ef7;
+    color: #fff;
+}
+
+#kt_holidays_table .delete-holiday-btn:hover {
+    background-color: #f1416c;
+    color: #fff;
+}
+
+    #kt_holidays_table .edit-holiday-btn:hover i,
+    #kt_holidays_table .delete-holiday-btn:hover i {
+        color: #fff !important;
+    }
+
+```

@@ -21,6 +21,8 @@ namespace Hr.Infrastructure.Repositories
 
         public IGenericRepo<GeneralSettings> GeneralSettings { get; }
 
+        public IGenericRepo<OfficialHoliday> OfficialHolidays { get; }
+
         public UnitOfWorkRepo(ApplicationDbContext context)
         {
             _context = context;
@@ -28,6 +30,7 @@ namespace Hr.Infrastructure.Repositories
             Departments = new GenericRepo<Department>(_context);
             Nationalites = new GenericRepo<Nationality>(_context);
             GeneralSettings = new GenericRepo<GeneralSettings>(_context);
+            OfficialHolidays = new GenericRepo<OfficialHoliday>(_context);
 
         }
             

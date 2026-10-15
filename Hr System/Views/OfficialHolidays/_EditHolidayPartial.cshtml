@@ -1,0 +1,17 @@
+﻿@model Hr.Application.ViewModels.OfficialHoliday.OfficialHolidayFormVm
+
+<form id="EditHolidayForm">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3 fv-row">
+        <label class="required form-label fw-bold">Holiday Name</label>
+        <input type="text" asp-for="Name" class="form-control form-control-solid" required />
+    </div>
+    <div class="mb-3 fv-row">
+        <label class="required form-label fw-bold">Start Date</label>
+        <input type="date" asp-for="StartDate" class="form-control form-control-solid" required />
+    </div>
+    <div class="mb-3 fv-row">
+        <label class="required form-label fw-bold">End Date</label>
+        <input type="date" asp-for="EndDate" class="form-control form-control-solid" required />
+    </div>
+</form>
