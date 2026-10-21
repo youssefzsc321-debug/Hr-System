@@ -13,5 +13,10 @@ namespace Hr.Infrastructure.Data
         public string FullName { get; set; }
         public int? RoleId { get; set; }
         public Role Role { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime? LastUpdatedOn { get; set; }
+        public bool IsDeleted { get; set; }
+        public string? CreatedById { get; set; }
+        public string? LastUpdatedById { get; set; }
     }
 }

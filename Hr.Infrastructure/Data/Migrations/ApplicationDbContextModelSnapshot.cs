@@ -82,31 +82,31 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(461),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9014),
                             Name = "Information Technology (IT)"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(504),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9060),
                             Name = "Human Resources (HR)"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(507),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9062),
                             Name = "Sales Department"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(509),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9064),
                             Name = "Marketing Department"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 845, DateTimeKind.Local).AddTicks(511),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9066),
                             Name = "Finance Department"
                         });
                 });
@@ -206,79 +206,79 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7540),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4800),
                             Name = "Egyptian"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7575),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4828),
                             Name = "Saudi"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7577),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4830),
                             Name = "Emirati"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7579),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4832),
                             Name = "Jordanian"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7581),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4834),
                             Name = "Kuwaiti"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7583),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4836),
                             Name = "Qatari"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7585),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4838),
                             Name = "Bahraini"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7587),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4839),
                             Name = "Omani"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7589),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4841),
                             Name = "Tunisian"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7591),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4843),
                             Name = "Moroccan"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7593),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4845),
                             Name = "Algerian"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7595),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4847),
                             Name = "American"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2026, 10, 15, 10, 53, 28, 848, DateTimeKind.Local).AddTicks(7596),
+                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4848),
                             Name = "British"
                         });
                 });
@@ -422,6 +422,12 @@ namespace Hr.Infrastructure.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -432,6 +438,15 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastUpdatedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

@@ -28,9 +28,14 @@ namespace Hr.Infrastructure
             services.AddScoped<IGeneralSettingServices, GeneralSettingService>();
             services.AddScoped<IRoleServices, RoleServices>();
             services.AddScoped<IUserService,UserService>();
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile<Hr.Infrastructure.Data.UserMapping>();
+                
+            });
 
 
-           
+
             return services;
         }
     }

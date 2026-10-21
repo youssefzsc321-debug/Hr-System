@@ -38,7 +38,21 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
-                <!--begin:Menu item (Roles & Permissions - Newly Added)-->
+                <!--begin:Menu item (Users)-->
+                <div class="menu-item">
+                    <a class="menu-link" asp-controller="User" asp-action="Index">
+                        <span class="menu-icon">
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3" d="M18 21.6C16.3 21.6 15 20.3 15 18.6V17.6C15 16.7 15.7 16 16.6 16H21.4C22.3 16 23 16.7 23 17.6V18.6C23 20.3 21.7 21.6 20 21.6H18Z" fill="currentColor" />
+                                    <path d="M12 12C14.2 12 16 10.2 16 8C16 5.8 14.2 4 12 4C9.8 4 8 5.8 8 8C8 10.2 9.8 12 12 12ZM12 14C9.3 14 4 15.35 4 18V20H20V18C20 15.35 14.7 14 12 14Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="menu-title">Users</span>
+                    </a>
+                </div>
+                <!--end:Menu item-->
                 <!--begin:Menu item (Permissions Groups)-->
                 <div class="menu-item">
                     <a class="menu-link" asp-controller="Roles" asp-action="Index">
@@ -53,7 +67,6 @@
                         <span class="menu-title">Permissions Groups</span>
                     </a>
                 </div>
-                <!--end:Menu item-->
                 <!--end:Menu item-->
                 <!--begin:Menu item (Official Holidays)-->
                 <div class="menu-item">
