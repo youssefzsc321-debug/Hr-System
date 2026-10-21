@@ -16,8 +16,8 @@ namespace Hr_System.Controllers
     {
         private readonly IUnitOfWorkRepo _unitOfWorkRepo;
         private readonly IMapper _mapper;
-        private IEmployeeService _employeeService;
-        public EmployeeController(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper, IEmployeeService employeeService)
+        private IEmployeeServices _employeeService;
+        public EmployeeController(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper, IEmployeeServices employeeService)
         {
             _unitOfWorkRepo = unitOfWorkRepo;
             _mapper = mapper;

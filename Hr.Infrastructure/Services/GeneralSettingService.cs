@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Hr.Infrastructure.Services
 {
-    public class GeneralSettingService : IGeneralSettingService
+    public class GeneralSettingService : IGeneralSettingServices
     {
         private readonly IUnitOfWorkRepo _unitOfWorkRepo;
         private readonly IMapper _mapper;

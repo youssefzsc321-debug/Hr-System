@@ -2,6 +2,7 @@
 using Hr.Application.Interfaces;
 using Hr.Application.Repositories;
 using Hr.Infrastructure.Data;
+using Hr.Infrastructure.Persistence.Seeds;
 using Hr.Infrastructure.Repositories;
 using Hr.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +14,7 @@ namespace Hr.Infrastructure
 {
     public static class InfrastructureRegistration
     {
-        public static IServiceCollection InfrastructureConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static async Task<IServiceCollection> InfrastructureConfigurationAsync(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection")
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -23,11 +24,13 @@ namespace Hr.Infrastructure
 
             services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
             services.AddScoped<IUnitOfWorkRepo, UnitOfWorkRepo>();
-            services.AddScoped<IEmployeeService, EmployeeService>();
-            services.AddScoped<IGeneralSettingService, GeneralSettingService>();
+            services.AddScoped<IEmployeeServices, EmployeeService>();
+            services.AddScoped<IGeneralSettingServices, GeneralSettingService>();
+            services.AddScoped<IRoleServices, RoleServices>();
+            services.AddScoped<IUserService,UserService>();
 
 
-
+           
             return services;
         }
     }

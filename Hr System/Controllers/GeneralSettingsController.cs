@@ -10,10 +10,10 @@ namespace Hr_System.Controllers
 {
     public class GeneralSettingsController : Controller
     {
-        private readonly IGeneralSettingService _generalSettingService;
+        private readonly IGeneralSettingServices _generalSettingService;
         private readonly IUnitOfWorkRepo _unitOfWorkRepo;
         private readonly IMapper _mapper;
-        public GeneralSettingsController(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper, IGeneralSettingService generalSettingService)
+        public GeneralSettingsController(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper, IGeneralSettingServices generalSettingService)
         {
             _unitOfWorkRepo = unitOfWorkRepo;
             _mapper = mapper;

@@ -13,6 +13,7 @@ namespace Hr.Application
                 cfg.AddProfile<Hr.Application.Mapping.EmployeeMapping>();
                 cfg.AddProfile<Hr.Application.Mapping.GeneralSettingMapping>();
                 cfg.AddProfile<Hr.Application.Mapping.OfficialHolidayMapping>();
+                cfg.AddProfile<Hr.Application.Mapping.RoleMapping>();
             });
 
             return services;

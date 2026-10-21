@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hr.Application.Interfaces
 {
-    public interface IEmployeeService
+    public interface IEmployeeServices
     {
         Task<FormVm> PrepareFormVmAsync(FormVm model = null);
         Task<(bool IsSuccess, Dictionary<string, string> FillErrors)> CreateEmployeeAsync(FormVm model);

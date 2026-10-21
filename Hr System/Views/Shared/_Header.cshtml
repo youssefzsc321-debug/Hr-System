@@ -50,8 +50,9 @@
                 </div>
             </div>
             <!--end::Theme mode-->
-            <!--begin::User-->
+            <!--begin::User Menu-->
             <div class="d-flex align-items-center ms-1" id="kt_header_user_menu_toggle">
+                <!--begin::Menu wrapper-->
                 <div class="btn btn-flex align-items-center bg-hover-white bg-hover-opacity-10 py-2 px-2 px-md-3" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                     <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
                         <span class="text-muted fs-8 fw-semibold lh-1 mb-1">Youssef</span>
@@ -61,8 +62,51 @@
                         <img src="~/assets/images/avatar.png" alt="image" />
                     </div>
                 </div>
+
+                <!--begin::User Account Menu-->
+                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
+
+                    <!--begin::Menu item (Profile Info)-->
+                    <div class="menu-item px-3">
+                        <div class="menu-content d-flex align-items-center px-3 py-2">
+                            <!--begin::Avatar-->
+                            <div class="symbol symbol-50px me-5">
+                                <img alt="Logo" src="~/assets/images/avatar.png" />
+                            </div>
+                            <!--end::Avatar-->
+                            <!--begin::Username-->
+                            <div class="d-flex flex-column">
+                                <div class="fw-bold d-flex align-items-center fs-5">Youssef Abuzaid</div>
+                                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">admin@hr.com</a>
+                            </div>
+                            <!--end::Username-->
+                        </div>
+                    </div>
+                    <!--end::Menu item-->
+                    <!--begin::Menu separator-->
+                    <div class="separator my-2"></div>
+                    <!--end::Menu separator-->
+                    <!--begin::Menu item (Account Settings)-->
+                    <div class="menu-item px-5">
+                        <a href="#" class="menu-link px-0 py-2">Account Settings</a>
+                    </div>
+                    <!--end::Menu item-->
+                    <!--begin::Menu separator-->
+                    <div class="separator my-2"></div>
+                    <!--end::Menu separator-->
+                    <!--begin::Menu item (Sign Out)-->
+                    <div class="menu-item px-5">
+                        <form asp-controller="Account" asp-action="Logout" method="post" id="logout_form" class="m-0">
+                            <button type="submit" class="btn btn-link menu-link px-0 py-2 w-100 text-start text-danger text-hover-danger">Sign Out</button>
+                        </form>
+                    </div>
+                    <!--end::Menu item-->
+
+                </div>
+                <!--end::User Account Menu-->
+                <!--end::Menu wrapper-->
             </div>
-            <!--end::User -->
+            <!--end::User Menu-->
         </div>
         <!--end::Topbar-->
     </div>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hr.Application.Interfaces
 {
-    public interface IGeneralSettingService
+    public interface IGeneralSettingServices
     {
         Task<GeneralSettings?> GetGeneralSetting();
         Task <(bool Success,string error)>SaveSettingAsync(FormVm model);

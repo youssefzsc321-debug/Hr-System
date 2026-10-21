@@ -1,0 +1,490 @@
+﻿
+@model Hr.Application.ViewModels.RolesVms.RoleFormVm
+
+@{
+    ViewData["Title"] = Model.Id > 0
+        ? "Edit Permission Group"
+        : "Add New Permission Group";
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    <!-- Toolbar -->
+    <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+        <div id="kt_app_toolbar_container"
+             class="app-container container-xxl d-flex flex-stack">
+
+            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+                <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                    User Groups
+                </h1>
+
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                    <li class="breadcrumb-item text-muted">
+                        <a href="/" class="text-muted text-hover-primary">Home</a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                    </li>
+
+                    <li class="breadcrumb-item text-muted">User Groups</li>
+
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                    </li>
+
+                    <li class="breadcrumb-item text-dark">
+                        @(Model.Id > 0 ? "Edit Group" : "Add New Group")
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <a href="@Url.Action("Index", "Roles")"
+                   class="btn btn-sm btn-light-primary fw-bold">
+                    <i class="ki-duotone ki-arrow-left fs-2"></i>
+                    User Groups List
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+
+            <form method="post"
+                  class="form"
+                  id="add-role-form">
+
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Top Buttons -->
+                <div class="d-flex justify-content-end mb-7 gap-3">
+                    <button type="button"
+                            id="btnCustom"
+                            class="btn btn-light-secondary fw-bold">
+                        Private custom
+                    </button>
+
+                    <button type="button"
+                            id="btnAll"
+                            class="btn btn-primary fw-bold">
+                        All Permissions
+                    </button>
+                </div>
+
+                <!-- Main Card -->
+                <div class="card card-flush py-4">
+                    <div class="card-body pt-0">
+
+                        <!-- Group Name and Save -->
+                        <div class="d-flex align-items-start my-5 gap-3">
+
+                            <button type="submit"
+                                    id="save-role-btn"
+                                    class="btn btn-primary fw-bold px-6">
+                                <span class="indicator-label">SAVE</span>
+                                <span class="indicator-progress d-none">
+                                    Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
+                            </button>
+
+                            <div class="flex-grow-1">
+                                <input asp-for="Name"
+                                       class="form-control form-control-solid"
+                                       placeholder="Group Name" />
+
+                                <span asp-validation-for="Name"
+                                      class="text-danger fs-7"></span>
+                            </div>
+
+                        </div>
+
+                        <!-- Search and Page Size -->
+                        <div class="d-flex justify-content-between align-items-center my-3 flex-wrap gap-3">
+
+                            <div class="d-flex align-items-center position-relative my-1">
+                                <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+
+                                <input type="text"
+                                       id="tableSearch"
+                                       class="form-control form-control-solid w-250px ps-12"
+                                       placeholder="Search..." />
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="text-muted fs-7">Show</span>
+
+                                <select id="pageSize"
+                                        class="form-select form-select-solid form-select-sm w-75px">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="all">All</option>
+                                </select>
+
+                                <span class="text-muted fs-7">entries</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Permissions Table -->
+                        <div class="table-responsive">
+                            <table id="permissionsTable"
+                                   class="table align-middle table-row-dashed fs-6 gy-5">
+
+                                <thead>
+                                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0 bg-light">
+                                        <th class="w-10px ps-2">
+                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                <input class="form-check-input"
+                                                       type="checkbox"
+                                                       id="selectAll" />
+                                            </div>
+                                        </th>
+
+                                        <th class="min-w-200px">Page</th>
+                                        <th class="text-center min-w-100px">Add</th>
+                                        <th class="text-center min-w-100px">Delete</th>
+                                        <th class="text-center min-w-100px">Edit</th>
+                                        <th class="text-center min-w-100px">Read</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="fw-semibold text-gray-600">
+
+                                    @for (int i = 0; i < Model.Permissions.Count; i++)
+                                    {
+                                        var permission = Model.Permissions[i];
+
+                                        var hasAnyPermission =
+                                            permission.CanRead ||
+                                            permission.CanAdd ||
+                                            permission.CanEdit ||
+                                            permission.CanDelete;
+
+                                        <tr>
+                                            <td>
+                                                <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                    <input class="form-check-input row-select"
+                                                           type="checkbox"
+                                                           @(hasAnyPermission ? "checked" : "") />
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <span class="fw-bold text-dark">
+                                                    @permission.PageName
+                                                </span>
+
+                                                <input type="hidden"
+                                                       name="Permissions[@i].PageName"
+                                                       value="@permission.PageName" />
+                                            </td>
+
+                                            <td class="text-center">
+                                                <div class="form-check form-check-sm form-check-custom form-check-solid justify-content-center">
+                                                    <input class="form-check-input permission-checkbox"
+                                                           type="checkbox"
+                                                           name="Permissions[@i].CanAdd"
+                                                           value="true"
+                                                           @(permission.CanAdd ? "checked" : "")
+                                                           @(!hasAnyPermission ? "disabled" : "") />
+
+                                                    <input type="hidden"
+                                                           name="Permissions[@i].CanAdd"
+                                                           value="false" />
+                                                </div>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <div class="form-check form-check-sm form-check-custom form-check-solid justify-content-center">
+                                                    <input class="form-check-input permission-checkbox"
+                                                           type="checkbox"
+                                                           name="Permissions[@i].CanDelete"
+                                                           value="true"
+                                                           @(permission.CanDelete ? "checked" : "")
+                                                           @(!hasAnyPermission ? "disabled" : "") />
+
+                                                    <input type="hidden"
+                                                           name="Permissions[@i].CanDelete"
+                                                           value="false" />
+                                                </div>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <div class="form-check form-check-sm form-check-custom form-check-solid justify-content-center">
+                                                    <input class="form-check-input permission-checkbox"
+                                                           type="checkbox"
+                                                           name="Permissions[@i].CanEdit"
+                                                           value="true"
+                                                           @(permission.CanEdit ? "checked" : "")
+                                                           @(!hasAnyPermission ? "disabled" : "") />
+
+                                                    <input type="hidden"
+                                                           name="Permissions[@i].CanEdit"
+                                                           value="false" />
+                                                </div>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <div class="form-check form-check-sm form-check-custom form-check-solid justify-content-center">
+                                                    <input class="form-check-input permission-checkbox"
+                                                           type="checkbox"
+                                                           name="Permissions[@i].CanRead"
+                                                           value="true"
+                                                           @(permission.CanRead ? "checked" : "")
+                                                           @(!hasAnyPermission ? "disabled" : "") />
+
+                                                    <input type="hidden"
+                                                           name="Permissions[@i].CanRead"
+                                                           value="false" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="tableInfo"
+                             class="text-muted fs-7 mt-4"></div>
+
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const form = document.getElementById("add-role-form");
+            const btnAll = document.getElementById("btnAll");
+            const btnCustom = document.getElementById("btnCustom");
+            const searchInput = document.getElementById("tableSearch");
+            const pageSizeSelect = document.getElementById("pageSize");
+            const selectAllHeader = document.getElementById("selectAll");
+            const saveButton = document.getElementById("save-role-btn");
+            const tableBody = document.querySelector("#permissionsTable tbody");
+            const tableInfo = document.getElementById("tableInfo");
+
+            const allRows = Array.from(tableBody.querySelectorAll("tr"));
+
+            function getRowCheckboxes() {
+                return allRows.map(row => row.querySelector(".row-select"));
+            }
+
+            function updateRowPermissions(rowCheckbox, checked) {
+                const row = rowCheckbox.closest("tr");
+                const permissions = row.querySelectorAll(".permission-checkbox");
+
+                permissions.forEach(checkbox => {
+                    checkbox.checked = checked;
+                    checkbox.disabled = !checked;
+                });
+
+                updateSelectAllState();
+            }
+
+            function updateSelectAllState() {
+                const rowCheckboxes = getRowCheckboxes();
+
+                const checkedCount = rowCheckboxes.filter(cb => cb.checked).length;
+
+                selectAllHeader.checked =
+                    rowCheckboxes.length > 0 &&
+                    checkedCount === rowCheckboxes.length;
+
+                selectAllHeader.indeterminate =
+                    checkedCount > 0 &&
+                    checkedCount < rowCheckboxes.length;
+            }
+
+            function filterRows() {
+                const term = searchInput.value.toLowerCase().trim();
+                const pageSize = pageSizeSelect.value;
+
+                const matchedRows = allRows.filter(row => {
+                    const pageName = row.querySelector("td:nth-child(2)")
+                        .textContent.toLowerCase();
+
+                    return pageName.includes(term);
+                });
+
+                allRows.forEach(row => {
+                    row.style.display = "none";
+                });
+
+                const visibleRows = pageSize === "all"
+                    ? matchedRows
+                    : matchedRows.slice(0, Number(pageSize));
+
+                visibleRows.forEach(row => {
+                    row.style.display = "";
+                });
+
+                tableInfo.textContent = matchedRows.length === 0
+                    ? "No matching permissions found."
+                    : `Showing ${visibleRows.length} of ${matchedRows.length} matching entries.`;
+
+                updateSelectAllState();
+            }
+
+            getRowCheckboxes().forEach(rowCheckbox => {
+                rowCheckbox.addEventListener("change", function () {
+                    updateRowPermissions(this, this.checked);
+                });
+            });
+
+            btnAll.addEventListener("click", function () {
+                getRowCheckboxes().forEach(rowCheckbox => {
+                    rowCheckbox.checked = true;
+
+                    const row = rowCheckbox.closest("tr");
+
+                    row.querySelectorAll(".permission-checkbox").forEach(cb => {
+                        cb.checked = true;
+                        cb.disabled = false;
+                    });
+                });
+
+                updateSelectAllState();
+            });
+
+            btnCustom.addEventListener("click", function () {
+                getRowCheckboxes().forEach(rowCheckbox => {
+                    rowCheckbox.checked = false;
+
+                    const row = rowCheckbox.closest("tr");
+
+                    row.querySelectorAll(".permission-checkbox").forEach(cb => {
+                        cb.checked = false;
+                        cb.disabled = true;
+                    });
+                });
+
+                updateSelectAllState();
+            });
+
+            selectAllHeader.addEventListener("change", function () {
+                const checked = this.checked;
+
+                getRowCheckboxes().forEach(rowCheckbox => {
+                    rowCheckbox.checked = checked;
+
+                    const row = rowCheckbox.closest("tr");
+
+                    row.querySelectorAll(".permission-checkbox").forEach(cb => {
+                        cb.checked = checked;
+                        cb.disabled = !checked;
+                    });
+                });
+
+                selectAllHeader.indeterminate = false;
+            });
+
+            searchInput.addEventListener("input", filterRows);
+            pageSizeSelect.addEventListener("change", filterRows);
+
+            filterRows();
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                if (typeof $ !== "undefined" &&
+                    $(form).valid &&
+                    !$(form).valid()) {
+                    return;
+                }
+
+                const formData = new FormData(form);
+                const roleId = Number(formData.get("Id") || 0);
+
+                const url = roleId > 0
+                    ? '@Url.Action("Edit", "Roles")'
+                    : '@Url.Action("Create", "Roles")';
+
+                const label = saveButton.querySelector(".indicator-label");
+                const progress = saveButton.querySelector(".indicator-progress");
+
+                saveButton.disabled = true;
+                label.classList.add("d-none");
+                progress.classList.remove("d-none");
+
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    });
+
+                    const contentType = response.headers.get("content-type") || "";
+
+                    if (!contentType.includes("application/json")) {
+                        throw new Error(
+                            `Expected JSON but received ${contentType || "an unknown response"}. HTTP ${response.status}`
+                        );
+                    }
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.message || `HTTP ${response.status}`);
+                    }
+
+                    if (data.success) {
+                        await Swal.fire({
+                            title: "Saved Successfully!",
+                            text: "The user group and permissions have been saved.",
+                            icon: "success",
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+
+                        window.location.href = '@Url.Action("Index", "Roles")';
+                    } else {
+                        await Swal.fire({
+                            title: "Unable to Save",
+                            text: data.message || "Please check the entered data.",
+                            icon: "warning",
+                            confirmButtonColor: "#009ef7"
+                        });
+                    }
+                } catch (error) {
+                    console.error("Save Role Error:", error);
+
+                    Swal.fire({
+                        title: "Error",
+                        text: error.message || "An error occurred while saving the user group.",
+                        icon: "error",
+                        confirmButtonColor: "#009ef7"
+                    });
+                } finally {
+                    saveButton.disabled = false;
+                    label.classList.remove("d-none");
+                    progress.classList.add("d-none");
+                }
+            });
+        });
+    </script>
+}

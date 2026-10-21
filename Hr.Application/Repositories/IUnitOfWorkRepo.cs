@@ -15,6 +15,8 @@ namespace Hr.Application.Repositories
         public IGenericRepo<Nationality> Nationalites { get; }
         public IGenericRepo<GeneralSettings> GeneralSettings { get; }
         public IGenericRepo<OfficialHoliday> OfficialHolidays { get; }
+        public IGenericRepo<Role> Roles { get; }
+        public IGenericRepo<RolePermission> RolePermissions { get; }
         
 
         int SaveChanges();

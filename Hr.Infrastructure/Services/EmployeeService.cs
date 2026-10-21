@@ -16,7 +16,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Hr.Infrastructure.Services
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService : IEmployeeServices
     {
         private readonly IUnitOfWorkRepo _unitOfWorkRepo;
         private readonly IMapper _mapper;

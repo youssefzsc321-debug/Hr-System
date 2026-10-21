@@ -2,15 +2,17 @@ using Hr.Infrastructure;
 using Hr.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Hr.Application;
+using Hr.Infrastructure.Persistence.Seeds; 
+
 namespace Hr_System
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.InfrastructureConfiguration(
+            builder.Services.InfrastructureConfigurationAsync(
                 builder.Configuration);
 
             builder.Services.AddApplicationServices();
@@ -24,6 +26,21 @@ namespace Hr_System
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    await UserSeed.SeedUsersAsync(userManager);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
 
             if (app.Environment.IsDevelopment())
             {
