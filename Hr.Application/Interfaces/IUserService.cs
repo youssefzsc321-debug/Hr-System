@@ -11,5 +11,11 @@ namespace Hr.Application.Interfaces
     {
         Task<(bool IsSuccess, string error)> LoginAsync(LoginVm model);
         Task LogoutAsync();
+        Task<UserFormVm> FillModel(UserFormVm? model=null);
+        Task<(bool Succeeded, IEnumerable<string> Errors)> CreateUserAsync(UserFormVm model);
+        Task<UserFormVm?> GetEditUserFormAsync(string id);
+        Task<(bool Succeeded, IEnumerable<string> Errors)> UpdateUserAsync(UserFormVm model);
+        Task<(bool Succeeded, IEnumerable<string> Errors)> ChangePasswordAsync(UserPasswordVm model);
+
     }
 }

@@ -2,7 +2,7 @@ using Hr.Infrastructure;
 using Hr.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Hr.Application;
-using Hr.Infrastructure.Persistence.Seeds; 
+using Hr.Infrastructure.Persistence.Seeds;
 
 namespace Hr_System
 {
@@ -20,8 +20,8 @@ namespace Hr_System
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<AppUser>(
-                options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+     options => options.SignIn.RequireConfirmedAccount = false)
+     .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
 

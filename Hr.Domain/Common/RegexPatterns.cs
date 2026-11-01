@@ -10,5 +10,6 @@ namespace Hr.Domain.Common
     {
         public const string Phone = @"^01[0125][0-9]{8}$";
         public const string SalaryRegex = @"^\d+(\.\d{1,2})?$";
+        public const string Password = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=\[{\]};:<>|./?,-]).{8,}$";
     }
 }

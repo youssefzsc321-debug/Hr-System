@@ -31,7 +31,12 @@
           asp-append-version="true" />
 </head>
 
-<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed">
+@{
+    var isAuthenticated = User.Identity?.IsAuthenticated == true;
+}
+
+<body id="kt_body"
+      class="header-fixed header-tablet-and-mobile-fixed @(isAuthenticated ? "aside-enabled aside-fixed" : "")">
 
     <!-- Theme Mode -->
     <script>
@@ -65,8 +70,15 @@
         <!-- Page -->
         <div class="page d-flex flex-row flex-column-fluid">
 
+            @if (isAuthenticated)
+            {
+                <!-- Aside -->
+                <partial name="_Aside" />
+            }
+
             <!-- Wrapper -->
-            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div class="wrapper d-flex flex-column flex-row-fluid"
+                 id="kt_wrapper">
 
                 <!-- Header -->
                 <partial name="_Header" />
@@ -74,18 +86,14 @@
                 <!-- Content Wrapper -->
                 <div class="d-flex flex-column-fluid">
 
-                    @if (User.Identity != null && User.Identity.IsAuthenticated)
-                    {
-                        <!-- Aside -->
-                        <partial name="_Aside" />
-
-                    }
-                        
                     <!-- Main Container -->
                     <div class="d-flex flex-column flex-column-fluid container-fluid">
 
-                        <div class="content flex-column-fluid" id="kt_content">
+                        <div class="content flex-column-fluid"
+                             id="kt_content">
+
                             @RenderBody()
+
                         </div>
 
                     </div>
@@ -127,6 +135,7 @@
                       fill="currentColor" />
             </svg>
         </span>
+
     </div>
     <!-- End Scroll to Top -->
     <!-- Global JavaScript -->
@@ -143,7 +152,8 @@
     <script src="~/assets/js/scripts.bundle.js"></script>
 
     <!-- Custom JavaScript -->
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
 
     <!-- Page-specific Scripts -->
     @await RenderSectionAsync("Scripts", required: false)

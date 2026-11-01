@@ -39,6 +39,9 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -82,31 +85,31 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9014),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7942),
                             Name = "Information Technology (IT)"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9060),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7979),
                             Name = "Human Resources (HR)"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9062),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7981),
                             Name = "Sales Department"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9064),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7983),
                             Name = "Marketing Department"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 419, DateTimeKind.Local).AddTicks(9066),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7985),
                             Name = "Finance Department"
                         });
                 });
@@ -206,79 +209,79 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4800),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4527),
                             Name = "Egyptian"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4828),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4555),
                             Name = "Saudi"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4830),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4558),
                             Name = "Emirati"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4832),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4559),
                             Name = "Jordanian"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4834),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4561),
                             Name = "Kuwaiti"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4836),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4563),
                             Name = "Qatari"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4838),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4565),
                             Name = "Bahraini"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4839),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4567),
                             Name = "Omani"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4841),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4569),
                             Name = "Tunisian"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4843),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4571),
                             Name = "Moroccan"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4845),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4572),
                             Name = "Algerian"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4847),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4574),
                             Name = "American"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2026, 10, 21, 15, 52, 35, 423, DateTimeKind.Local).AddTicks(4848),
+                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4576),
                             Name = "British"
                         });
                 });
@@ -295,6 +298,7 @@ namespace Hr.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("DeducationVal")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FirstDay")
@@ -305,6 +309,7 @@ namespace Hr.Infrastructure.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("OverTimeVal")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("SecondDay")
@@ -353,6 +358,9 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -365,6 +373,8 @@ namespace Hr.Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Roles");
                 });
@@ -471,9 +481,6 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -493,8 +500,6 @@ namespace Hr.Infrastructure.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -696,6 +701,13 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Navigation("Nationality");
                 });
 
+            modelBuilder.Entity("Hr.Domain.Entites.Role", b =>
+                {
+                    b.HasOne("Hr.Infrastructure.Data.AppUser", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("AppUserId");
+                });
+
             modelBuilder.Entity("Hr.Domain.Entites.RolePermission", b =>
                 {
                     b.HasOne("Hr.Domain.Entites.Role", "Role")
@@ -703,15 +715,6 @@ namespace Hr.Infrastructure.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Hr.Infrastructure.Data.AppUser", b =>
-                {
-                    b.HasOne("Hr.Domain.Entites.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });
@@ -785,6 +788,11 @@ namespace Hr.Infrastructure.Data.Migrations
             modelBuilder.Entity("Hr.Domain.Entites.Role", b =>
                 {
                     b.Navigation("Permissions");
+                });
+
+            modelBuilder.Entity("Hr.Infrastructure.Data.AppUser", b =>
+                {
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

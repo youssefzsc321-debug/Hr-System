@@ -11,8 +11,8 @@ namespace Hr.Infrastructure.Data
     public class AppUser: IdentityUser
     {
         public string FullName { get; set; }
-        public int? RoleId { get; set; }
-        public Role Role { get; set; }
+
+        public ICollection<Role> Roles { get; set; } = new List<Role>();
         public DateTime CreatedOn { get; set; } = DateTime.Now;
         public DateTime? LastUpdatedOn { get; set; }
         public bool IsDeleted { get; set; }

@@ -5,6 +5,7 @@ namespace Hr.Domain.Entites
 {
     public class Attendance:BaseEntity
     {
+        public DateOnly Date { get; set; }
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
