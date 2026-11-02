@@ -9,8 +9,9 @@ namespace Hr.Domain.Entites
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
+        public bool IsDeleted { get; set; }
         public TimeOnly CheckIn { get; set; }
-        public TimeOnly CheckOut { get; set; }
+        public TimeOnly? CheckOut { get; set; }
 
     }
 }

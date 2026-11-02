@@ -1,5 +1,6 @@
 ﻿using Hr.Domain.Common;
 using Hr.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Hr.Domain.Entites.EmployeeAggragtte
 {
+    [Index(nameof(PhoneNumber),IsUnique =true)]
+    [Index(nameof(NationalId),IsUnique =true)]
+
     public class Employee:BaseEntity
     {
         public string FullName { get; set; }

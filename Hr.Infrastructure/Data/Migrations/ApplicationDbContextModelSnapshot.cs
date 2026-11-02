@@ -33,7 +33,7 @@ namespace Hr.Infrastructure.Data.Migrations
                     b.Property<TimeOnly>("CheckIn")
                         .HasColumnType("time");
 
-                    b.Property<TimeOnly>("CheckOut")
+                    b.Property<TimeOnly?>("CheckOut")
                         .HasColumnType("time");
 
                     b.Property<DateTime>("CreatedOn")
@@ -44,6 +44,9 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastUpdatedOn")
                         .HasColumnType("datetime2");
@@ -85,31 +88,31 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7942),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 308, DateTimeKind.Local).AddTicks(5351),
                             Name = "Information Technology (IT)"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7979),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 308, DateTimeKind.Local).AddTicks(5406),
                             Name = "Human Resources (HR)"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7981),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 308, DateTimeKind.Local).AddTicks(5408),
                             Name = "Sales Department"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7983),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 308, DateTimeKind.Local).AddTicks(5410),
                             Name = "Marketing Department"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 727, DateTimeKind.Local).AddTicks(7985),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 308, DateTimeKind.Local).AddTicks(5413),
                             Name = "Finance Department"
                         });
                 });
@@ -179,6 +182,9 @@ namespace Hr.Infrastructure.Data.Migrations
 
                     b.HasIndex("NationalityId");
 
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique();
+
                     b.ToTable("Employees");
                 });
 
@@ -209,79 +215,79 @@ namespace Hr.Infrastructure.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4527),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(1934),
                             Name = "Egyptian"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4555),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(1995),
                             Name = "Saudi"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4558),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(1998),
                             Name = "Emirati"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4559),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2000),
                             Name = "Jordanian"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4561),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2003),
                             Name = "Kuwaiti"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4563),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2005),
                             Name = "Qatari"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4565),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2007),
                             Name = "Bahraini"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4567),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2010),
                             Name = "Omani"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4569),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2012),
                             Name = "Tunisian"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4571),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2014),
                             Name = "Moroccan"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4572),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2017),
                             Name = "Algerian"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4574),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2019),
                             Name = "American"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedOn = new DateTime(2026, 11, 1, 9, 44, 41, 731, DateTimeKind.Local).AddTicks(4576),
+                            CreatedOn = new DateTime(2026, 11, 2, 10, 11, 9, 314, DateTimeKind.Local).AddTicks(2021),
                             Name = "British"
                         });
                 });

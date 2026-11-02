@@ -14,6 +14,7 @@ namespace Hr.Application
                 cfg.AddProfile<Hr.Application.Mapping.GeneralSettingMapping>();
                 cfg.AddProfile<Hr.Application.Mapping.OfficialHolidayMapping>();
                 cfg.AddProfile<Hr.Application.Mapping.RoleMapping>();
+                cfg.AddProfile<Hr.Application.Mapping.AttendanceMapping>();
             });
 
             return services;

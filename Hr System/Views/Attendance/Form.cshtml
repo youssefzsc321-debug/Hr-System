@@ -1,0 +1,112 @@
+﻿@model Hr.Application.ViewModels.AttendanceVM.AttendanceFormVm
+
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Add Attendance" : "Edit Attendance";
+}
+
+<!--begin::Card-->
+<div class="card card-flush py-4">
+    <!--begin::Card header-->
+    <div class="card-header">
+        <div class="card-title">
+            <h2>@(Model.Id == 0 ? "Add New Attendance" : "Edit Attendance Record")</h2>
+        </div>
+    </div>
+    <!--end::Card header-->
+    <!--begin::Form-->
+    <form id="attendanceForm" asp-action="@(Model.Id == 0 ? "Create" : "Edit")" method="post" class="form">
+        <input type="hidden" asp-for="Id" />
+
+        <!--begin::Card body-->
+        <div class="card-body pt-0">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-5"></div>
+
+            <div class="row g-9 mb-8">
+                <!-- Employee Dropdown -->
+                <div class="col-md-6 fv-row">
+                    <label asp-for="EmployeeId" class="required form-label"></label>
+                    <select asp-for="EmployeeId" asp-items="Model.Employees" class="form-select form-select-solid" data-control="select2" data-placeholder="Select an employee...">
+                        <option value="">Select Employee...</option>
+                    </select>
+                    <span asp-validation-for="EmployeeId" class="text-danger fs-7 d-block mt-1"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="col-md-6 fv-row">
+                    <label asp-for="Date" class="required form-label"></label>
+                    <input asp-for="Date" type="date" value="@Model.Date.ToString("yyyy-MM-dd")" class="form-control form-control-solid" />
+                    <span asp-validation-for="Date" class="text-danger fs-7 d-block mt-1"></span>
+                </div>
+            </div>
+
+            <div class="row g-9 mb-8">
+                <!-- Check In Time -->
+                <div class="col-md-6 fv-row">
+                    <label asp-for="CheckIn" class="required form-label"></label>
+                    <input asp-for="CheckIn" type="time" class="form-control form-control-solid" />
+                    <span asp-validation-for="CheckIn" class="text-danger fs-7 d-block mt-1"></span>
+                </div>
+
+                <!-- Check Out Time -->
+                <div class="col-md-6 fv-row">
+                    <label asp-for="CheckOut" class="form-label"></label>
+                    <input asp-for="CheckOut" type="time" class="form-control form-control-solid" />
+                    <span asp-validation-for="CheckOut" class="text-danger fs-7 d-block mt-1"></span>
+                </div>
+            </div>
+        </div>
+        <!--end::Card body-->
+        <!--begin::Card footer-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <a asp-action="Index" class="btn btn-light btn-active-light-primary me-3">Cancel</a>
+            <button type="submit" class="btn btn-primary">
+                Save Changes
+            </button>
+        </div>
+        <!--end::Card footer-->
+    </form>
+    <!--end::Form-->
+</div>
+<!--end::Card-->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    @if (Model.Id > 0)
+    {
+        <script>
+            document.getElementById('attendanceForm').addEventListener('submit', function (e) {
+                if (typeof $ !== 'undefined' && typeof $(this).valid === 'function' && !$(this).valid()) {
+                    return;
+                }
+
+                e.preventDefault();
+                var form = this;
+
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        title: 'Confirm Edit',
+                        text: 'Are you sure you want to save changes to this record?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, save changes!',
+                        cancelButtonText: 'Cancel',
+                        customClass: {
+                            confirmButton: 'btn btn-primary',
+                            cancelButton: 'btn btn-light'
+                        },
+                        buttonsStyling: false
+                    }).then(function (result) {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                } else {
+                    if (confirm('Are you sure you want to save changes to this record?')) {
+                        form.submit();
+                    }
+                }
+            });
+        </script>
+    }
+}
