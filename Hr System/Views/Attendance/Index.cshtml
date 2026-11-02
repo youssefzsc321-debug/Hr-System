@@ -166,7 +166,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             if (typeof $ !== 'undefined' && $.fn.DataTable) {
                 $("#kt_table_attendances").DataTable({
-                    "searching": false,
+                    "searching": false, 
                     "language": {
                         "lengthMenu": "Show _MENU_",
                     },
@@ -185,7 +185,6 @@
                 });
             }
 
-            // التحقق من ملء حقل واحد على الأقل عند الفلترة
             const filterForm = document.getElementById('filterForm');
             if (filterForm) {
                 filterForm.addEventListener('submit', function (e) {

@@ -10,6 +10,7 @@ namespace Hr.Infrastructure.Specifications.EmployeesSpec
                 (string.IsNullOrEmpty(specParams.Search) || x.FullName.ToLower().Contains(specParams.Search.ToLower())) &&
                 (!specParams.DepartmentId.HasValue || x.DepartmentId == specParams.DepartmentId) &&
                 (!specParams.NationalityId.HasValue || x.NationalityId == specParams.NationalityId)
+            && !x.IsDeleted
             )
         {
             AddInclude(x => x.Department);
