@@ -2,10 +2,11 @@
 using Hr.Domain.Entites;
 using Hr.Domain.Entites.EmployeeAggragtte;
 using Hr.Domain.Enums;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hr.Application.ViewModels.EmployeesVM
 {
     public class FormVm
@@ -22,6 +23,7 @@ namespace Hr.Application.ViewModels.EmployeesVM
         [Required(ErrorMessage = Errors.Required)]
         [RegularExpression(RegexPatterns.Phone, ErrorMessage = Errors.PhoneRegex)]
         [Display(Name = "Phone Number")]
+        [Remote(action: "AllowPhoneNumber", controller: "Employee", AdditionalFields = "Id", ErrorMessage = Errors.isAlreadyExist)]
         public string PhoneNumber { get; set; } = string.Empty;
 
         [Required(ErrorMessage = Errors.Required)]
@@ -40,6 +42,7 @@ namespace Hr.Application.ViewModels.EmployeesVM
         [Required(ErrorMessage = Errors.Required)]
         [StringLength(14, MinimumLength = 14, ErrorMessage = Errors.MinLengthForNatId)]
         [Display(Name = "National ID")]
+        [Remote(action: "AllowNationalId", controller: "Employee", AdditionalFields = "Id", ErrorMessage = Errors.isAlreadyExist)]
         public string NationalId { get; set; } = string.Empty;
 
         [Required(ErrorMessage = Errors.Required)]

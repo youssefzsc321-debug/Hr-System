@@ -14,5 +14,7 @@ namespace Hr.Domain.Common
         public const string ValidSalary = "Please enter a valid salary";
         public const string WeakPassword = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
         public const string ConfirmPasswordNotMatch = "Password and confirmation password do not match.";
+        public const string isAlreadyExist = "this {0} is already exist!";
+
     }
 }

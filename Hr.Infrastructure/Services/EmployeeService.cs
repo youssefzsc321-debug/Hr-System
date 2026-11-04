@@ -1,33 +1,40 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.Validation;
 using Hr.Application.Interfaces;
 using Hr.Application.Repositories;
 using Hr.Application.ViewModels.EmployeesVM;
 using Hr.Domain.Common;
 using Hr.Domain.Entites.EmployeeAggragtte;
+using Hr.Infrastructure.Data;
 using Hr.Infrastructure.Specifications.EmployeesSpec;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Hr.Infrastructure.Services
 {
+
     public class EmployeeService : IEmployeeServices
     {
+        private readonly ApplicationDbContext _context;
         private readonly IUnitOfWorkRepo _unitOfWorkRepo;
         private readonly IMapper _mapper;
-        public EmployeeService(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper)
+        public EmployeeService(IUnitOfWorkRepo unitOfWorkRepo, IMapper mapper, ApplicationDbContext context)
         {
             _unitOfWorkRepo = unitOfWorkRepo;
             _mapper = mapper;
+            _context = context;
         }
         public async Task<(bool IsSuccess, Dictionary<string, string> FillErrors)> CreateEmployeeAsync(FormVm model)
         {
-            var fillErrors=new Dictionary<string, string>();
+            var fillErrors = new Dictionary<string, string>();
             var age = DateTime.Today.Year - model.DateOfBirth.Year;
             if (model.DateOfBirth.Date > DateTime.Today.AddYears(-age)) age--;
             if (age < 20)
@@ -48,6 +55,18 @@ namespace Hr.Infrastructure.Services
             return (true, null);
         }
 
+        public async Task<Employee?> GetByNationalId(string nationalId)
+        {
+            var employee = await _context.Employees.SingleOrDefaultAsync(x => x.NationalId == nationalId);
+            return employee;
+        }
+
+        public async Task<Employee?> GetByPhoneNumber(string phoneNumber)
+        {
+            var employee = await _context.Employees.SingleOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+            return employee; 
+        }
+
         public async Task<FormVm> PrepareFormVmAsync(FormVm model = null)
         {
             var modelVm = model ?? new FormVm();
@@ -60,10 +79,10 @@ namespace Hr.Infrastructure.Services
 
         public async Task<bool> ToggleStatusAsync(int id)
         {
-            var employee=await _unitOfWorkRepo.Employees.GetByIdAsync(id);
+            var employee = await _unitOfWorkRepo.Employees.GetByIdAsync(id);
             if (employee == null) return false;
-            employee.IsDeleted=!employee.IsDeleted;
-            employee.LastUpdatedOn= DateTime.Now;
+            employee.IsDeleted = !employee.IsDeleted;
+            employee.LastUpdatedOn = DateTime.Now;
             _unitOfWorkRepo.Employees.Update(employee);
             await _unitOfWorkRepo.SaveChangesAsync();
             return true;
@@ -71,7 +90,7 @@ namespace Hr.Infrastructure.Services
 
         public async Task<(bool IsSuccess, Dictionary<string, string> FillErrors)> UpdateEmployeeAsync(FormVm model)
         {
-            var fillErrors=new Dictionary<string, string>();    
+            var fillErrors = new Dictionary<string, string>();
             var age = DateTime.Today.Year - model.DateOfBirth.Year;
             if (model.DateOfBirth.Date > DateTime.Today.AddYears(-age)) age--;
             if (age < 20)
@@ -82,7 +101,7 @@ namespace Hr.Infrastructure.Services
             {
                 fillErrors.Add(nameof(model.ContractDate), "Please enter a valid contract date (Company started in 2008).");
             }
-            if(fillErrors.Count>0)return (false, fillErrors);
+            if (fillErrors.Count > 0) return (false, fillErrors);
             var spec = new EmployeesWithDepartmetnSpec(model.Id);
             var employee = await _unitOfWorkRepo.Employees.GetByIdWithSpec(spec);
             if (employee == null)

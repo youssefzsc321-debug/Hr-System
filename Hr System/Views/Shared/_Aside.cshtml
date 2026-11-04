@@ -9,7 +9,7 @@
 
                 <!--begin:Menu item (Home)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="Home" asp-action="Index">
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" active-when="Home">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,23 +22,26 @@
                 </div>
                 <!--end:Menu item-->
                 <!--begin:Menu item (Employees)-->
-                <div class="menu-item">
-                    <a class="menu-link" asp-controller="Employee" asp-action="Index">
-                        <span class="menu-icon">
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.3" d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z" fill="currentColor" />
-                                    <path d="M12 14.1C9.3 14.1 4 15.45 4 18.1V19.4C4 19.95 4.45 20.4 5 20.4H19C19.55 20.4 20 19.95 20 19.4V18.1C20 15.45 14.7 14.1 12 14.1Z" fill="currentColor" />
-                                </svg>
+                @if (User.Claims.Any(c => c.Type == "Permission" && c.Value == "Employees_Read"))
+                {
+                    <div class="menu-item">
+                        <a class="menu-link" asp-controller="Employee" asp-action="Index" active-when="Employee">
+                            <span class="menu-icon">
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3" d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z" fill="currentColor" />
+                                        <path d="M12 14.1C9.3 14.1 4 15.45 4 18.1V19.4C4 19.95 4.45 20.4 5 20.4H19C19.55 20.4 20 19.95 20 19.4V18.1C20 15.45 14.7 14.1 12 14.1Z" fill="currentColor" />
+                                    </svg>
+                                </span>
                             </span>
-                        </span>
-                        <span class="menu-title">Employees</span>
-                    </a>
-                </div>
+                            <span class="menu-title">Employees</span>
+                        </a>
+                    </div>
+                }
                 <!--end:Menu item-->
                 <!--begin:Menu item (Users)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="User" asp-action="Index">
+                    <a class="menu-link" asp-controller="User" asp-action="Index" active-when="User">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +56,7 @@
                 <!--end:Menu item-->
                 <!--begin:Menu item (Permissions Groups)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="Roles" asp-action="Index">
+                    <a class="menu-link" asp-controller="Roles" asp-action="Index" active-when="Roles">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +71,7 @@
                 <!--end:Menu item-->
                 <!--begin:Menu item (Official Holidays)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="OfficialHolidays" asp-action="Index">
+                    <a class="menu-link" asp-controller="OfficialHolidays" asp-action="Index" active-when="OfficialHolidays">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,8 +85,9 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
+                <!--begin:Menu item (Attendance)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="Attendance" asp-action="Index">
+                    <a class="menu-link" asp-controller="Attendance" asp-action="Index" active-when="Attendance">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,8 +99,9 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
+                <!--begin:Menu item (Salary Report)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="SalaryReport" asp-action="Index">
+                    <a class="menu-link" asp-controller="SalaryReport" asp-action="Index" active-when="SalaryReport">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,9 +114,9 @@
                     </a>
                 </div>
                 <!--end:Menu item-->
-                <!--begin:Menu item (General Settings)-->
+                <!--begin::Menu item (General Settings)-->
                 <div class="menu-item">
-                    <a class="menu-link" asp-controller="GeneralSettings" asp-action="Index">
+                    <a class="menu-link" asp-controller="GeneralSettings" asp-action="Index" active-when="GeneralSettings">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +128,7 @@
                         <span class="menu-title">General Settings</span>
                     </a>
                 </div>
-                <!--end:Menu item-->
+                <!--end::Menu item-->
 
             </div>
             <!--end::Menu-->

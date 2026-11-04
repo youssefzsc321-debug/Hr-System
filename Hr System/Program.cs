@@ -3,6 +3,7 @@ using Hr.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Hr.Application;
 using Hr.Infrastructure.Persistence.Seeds;
+using QuestPDF.Infrastructure; 
 
 namespace Hr_System
 {
@@ -12,6 +13,8 @@ namespace Hr_System
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            QuestPDF.Settings.License = LicenseType.Community;
+            QuestPDF.Settings.UseSystemFonts = true;
             builder.Services.InfrastructureConfigurationAsync(
                 builder.Configuration);
 
@@ -20,8 +23,8 @@ namespace Hr_System
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<AppUser>(
-     options => options.SignIn.RequireConfirmedAccount = false)
-     .AddEntityFrameworkStores<ApplicationDbContext>();
+         options => options.SignIn.RequireConfirmedAccount = false)
+         .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
 

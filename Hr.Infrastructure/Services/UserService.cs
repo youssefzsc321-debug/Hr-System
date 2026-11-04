@@ -125,22 +125,52 @@ namespace Hr.Infrastructure.Services
                 lockoutOnFailure: false
             );
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return (true, string.Empty);
+                if (result.IsNotAllowed)
+                    return (false, "You are not allowed to sign in. Please confirm your account.");
+                if (result.IsLockedOut)
+                    return (false, "Your account is locked. Please try again later.");
+
+                return (false, "Invalid username/email or password. Please try again.");
             }
 
-            if (result.IsNotAllowed)
+            var fullUser = await _userManager.Users
+                .Include(u => u.Roles)
+                .ThenInclude(r => r.Permissions) 
+                .FirstOrDefaultAsync(u => u.Id == user.Id);
+
+            if (fullUser != null)
             {
-                return (false, "You are not allowed to sign in. Please confirm your account.");
+                var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, fullUser.Id),
+            new Claim(ClaimTypes.Name, fullUser.UserName ?? ""),
+            new Claim(ClaimTypes.Email, fullUser.Email ?? "")
+        };
+
+                foreach (var role in fullUser.Roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role.Name));
+
+                    if (role.Permissions != null)
+                    {
+                        foreach (var p in role.Permissions)
+                        {
+                            if (p.CanAdd) claims.Add(new Claim("Permission", $"{p.PageName}_Add"));
+                            if (p.CanEdit) claims.Add(new Claim("Permission", $"{p.PageName}_Edit"));
+                            if (p.CanDelete) claims.Add(new Claim("Permission", $"{p.PageName}_Delete"));
+                            if (p.CanRead) claims.Add(new Claim("Permission", $"{p.PageName}_Read"));
+                        }
+                    }
+                }
+
+                await _signInManager.SignOutAsync();
+                var claimsIdentity = new ClaimsIdentity(claims, IdentityConstants.ApplicationScheme);
+                await _signInManager.SignInAsync(fullUser, model.RememberMe);
             }
 
-            if (result.IsLockedOut)
-            {
-                return (false, "Your account is locked. Please try again later.");
-            }
-
-            return (false, "Invalid username/email or password. Please try again.");
+            return (true, string.Empty);
         }
 
         public async Task LogoutAsync()

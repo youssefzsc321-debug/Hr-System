@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.IdentityModel.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Hr.Infrastructure.Filters;
 namespace Hr_System.Controllers
 {
     public class EmployeeController : Controller
@@ -23,6 +23,7 @@ namespace Hr_System.Controllers
             _mapper = mapper;
             _employeeService = employeeService;
         }
+        [HasPermission("Employees_Read")]
         public async Task<IActionResult> Index()
         {
             var spec = new EmployeesWithDepartmetnSpec(new EmployeeSepcParams());
@@ -102,7 +103,22 @@ namespace Hr_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
+        public async Task<IActionResult> AllowPhoneNumber(FormVm model)
+        {
+            var employee = await _employeeService.GetByPhoneNumber(model.PhoneNumber);
+            var isAllow = employee is null || employee.Id == model.Id;
+            return Json(isAllow);
+        }
+        public async Task<IActionResult> AllowNationalId(FormVm model)
+        {
+            var employee=await _employeeService.GetByNationalId(model.NationalId);
+            var isAllow=employee is null || employee.Id == model.Id;
+            return Json(isAllow);
+        }
+             
+
+
+
 
 
 

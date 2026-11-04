@@ -1,4 +1,20 @@
-﻿<!--begin::Header-->
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject UserManager<Hr.Infrastructure.Data.AppUser> UserManager
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+
+    var userRoles = User.Claims
+        .Where(c => c.Type == ClaimTypes.Role)
+        .Select(c => c.Value)
+        .ToList();
+
+    var displayRole = userRoles.Any() ? string.Join(", ", userRoles) : "User";
+    var displayName = !string.IsNullOrEmpty(currentUser?.FullName) ? currentUser.FullName : (currentUser?.UserName ?? "User");
+}
+
+<!--begin::Header-->
 <div id="kt_header" class="header" style="min-height: 75px;">
     <!--begin::Container-->
     <div class="container-fluid d-flex flex-stack py-2">
@@ -15,7 +31,7 @@
             </div>
             <!--end::Aside toggle-->
             <a href="/" class="d-flex align-items-center">
-                <img alt="Logo" src="~/assets/images/logo2.png" style="height: 150px; width: 150px; max-height: none;" />
+                <img alt="Logo" src="~/assets/images/logo2.png" style="height: 40px; width: auto;" />
             </a>
             <!--end::Logo-->
         </div>
@@ -55,8 +71,8 @@
                 <!--begin::Menu wrapper-->
                 <div class="btn btn-flex align-items-center bg-hover-white bg-hover-opacity-10 py-2 px-2 px-md-3" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                     <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
-                        <span class="text-muted fs-8 fw-semibold lh-1 mb-1">Youssef</span>
-                        <span class="text-white fs-8 fw-bold lh-1">HR Admin</span>
+                        <span class="text-muted fs-8 fw-semibold lh-1 mb-1">@displayName</span>
+                        <span class="text-white fs-8 fw-bold lh-1">@displayRole</span>
                     </div>
                     <div class="symbol symbol-30px symbol-md-40px">
                         <img src="~/assets/images/avatar.png" alt="image" />
@@ -76,8 +92,8 @@
                             <!--end::Avatar-->
                             <!--begin::Username-->
                             <div class="d-flex flex-column">
-                                <div class="fw-bold d-flex align-items-center fs-5">Youssef Abuzaid</div>
-                                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">admin@hr.com</a>
+                                <div class="fw-bold d-flex align-items-center fs-5">@(currentUser?.FullName ?? currentUser?.UserName)</div>
+                                <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">@(currentUser?.Email ?? "No Email")</a>
                             </div>
                             <!--end::Username-->
                         </div>

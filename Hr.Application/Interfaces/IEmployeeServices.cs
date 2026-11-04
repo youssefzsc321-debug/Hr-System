@@ -1,4 +1,5 @@
 ﻿using Hr.Application.ViewModels.EmployeesVM;
+using Hr.Domain.Entites.EmployeeAggragtte;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,8 @@ namespace Hr.Application.Interfaces
         Task<(bool IsSuccess, Dictionary<string, string> FillErrors)> CreateEmployeeAsync(FormVm model);
         Task<(bool IsSuccess, Dictionary<string, string> FillErrors)> UpdateEmployeeAsync(FormVm model);
         Task<bool> ToggleStatusAsync(int id);
+
+        Task<Employee?> GetByPhoneNumber(string phoneNumber);
+        Task<Employee?> GetByNationalId(string nationalId);
     }
 }
